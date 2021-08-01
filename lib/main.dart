@@ -1,3 +1,4 @@
+import 'package:appevolve_test/screens/orders_screen.dart';
 import 'package:flutter/material.dart';
 import 'adaptive.dart';
 import 'widgets/navigation_bar.dart';
@@ -16,7 +17,8 @@ class AppScaffold extends StatelessWidget {
         Container(
           width: 200,
           child: NavigationBar(),
-        )
+        ),
+        Expanded(child: OrdersScreen())
       ],
     );
 
@@ -44,7 +46,7 @@ class AppScaffold extends StatelessWidget {
                 ],
               )
             : null,
-        body: (isDesktop) ? desktopBody : Container(),
+        body: (isDesktop) ? desktopBody : OrdersScreen(),
         drawer: (!isDesktop)
             ? Drawer(
                 child: NavigationBar(),
