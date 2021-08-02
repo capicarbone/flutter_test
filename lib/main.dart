@@ -2,6 +2,7 @@ import 'package:appevolve_test/screens/orders_screen.dart';
 import 'package:flutter/material.dart';
 import 'adaptive.dart';
 import 'widgets/navigation_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(AppEvolveTest());
@@ -63,6 +64,7 @@ class AppEvolveTest extends StatelessWidget {
     return MaterialApp(
       title: 'AppEvolve',
       theme: ThemeData(
+          fontFamily: GoogleFonts.manrope().fontFamily,
           primaryColor: Color.fromRGBO(44, 45, 53, 1),
           accentColor: Color.fromRGBO(85, 163, 174, 1)),
       home: AppScaffold(),
