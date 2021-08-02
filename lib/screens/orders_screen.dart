@@ -41,7 +41,7 @@ class OrdersScreen extends StatelessWidget {
             SizedBox(
               height: 21,
             ),
-            CustomDataTable(),
+            OrdersTable(),
           ],
         ))
       ],

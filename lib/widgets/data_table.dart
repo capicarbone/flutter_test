@@ -34,7 +34,8 @@ class _DataCell extends StatelessWidget {
   final String? subText;
   final bool highlighted;
 
-  const _DataCell({Key? key, required this.text, this.subText, this.highlighted = false})
+  const _DataCell(
+      {Key? key, required this.text, this.subText, this.highlighted = false})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -44,9 +45,14 @@ class _DataCell extends StatelessWidget {
       children: [
         Text(
           text,
-          style: TextStyle(fontSize: 12, fontWeight: (highlighted) ? FontWeight.w600: FontWeight.normal),
+          style: TextStyle(
+              fontSize: 12,
+              fontWeight: (highlighted) ? FontWeight.w600 : FontWeight.normal),
         ),
-        if (subText != null) Text(subText!, style: TextStyle(fontSize: 12, color: Color.fromRGBO(140, 138, 152, 1)))
+        if (subText != null)
+          Text(subText!,
+              style: TextStyle(
+                  fontSize: 12, color: Color.fromRGBO(140, 138, 152, 1)))
       ],
     );
   }
@@ -78,7 +84,7 @@ class _DataTableRow extends StatelessWidget {
       required this.distribution,
       required this.status,
       required this.tracking,
-        required this.courier,
+      required this.courier,
       required this.price,
       required this.card_type,
       required this.card_numbers})
@@ -97,7 +103,10 @@ class _DataTableRow extends StatelessWidget {
         children: [
           Checkbox(value: false, onChanged: (_) {}),
           Expanded(
-            child: _DataCell(text: orderNo, highlighted: true,),
+            child: _DataCell(
+              text: orderNo,
+              highlighted: true,
+            ),
             flex: proportions['order_no']!,
           ),
           Expanded(
@@ -241,8 +250,96 @@ class _DataTableHeader extends StatelessWidget {
   }
 }
 
-class CustomDataTable extends StatelessWidget {
-  const CustomDataTable({Key? key}) : super(key: key);
+class _Pagination extends StatelessWidget {
+  const _Pagination({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 20),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        Text("1-20 of 294"),
+        OutlinedButton(
+          onPressed: () {},
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 20),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  height: 26,
+                  child: Center(
+                    child: Text(
+                      "Next Page",
+                      style: TextStyle(fontSize: 14),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Icon(Icons.arrow_forward)
+              ],
+            ),
+          ),
+          style: ButtonStyle(
+              padding: MaterialStateProperty.all<EdgeInsets>(
+                  EdgeInsets.symmetric(horizontal: 0, vertical: 0)),
+              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+              backgroundColor: MaterialStateProperty.all<Color>(
+                  Theme.of(context).accentColor)),
+        ),
+        Row(
+          children: [
+            Container(
+              child: Center(
+                child: Text(
+                  "1",
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+                ),
+              ),
+              height: 40,
+              width: 40,
+              margin: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(4))),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 4),
+                child: Text(
+              "of 15",
+              style: TextStyle(fontSize: 14),
+            )),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+              child: Center(child: Icon(Icons.arrow_left),),
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(4))),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+              child: Center(child: Icon(Icons.arrow_right),),
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(4))),
+            )
+          ],
+        )
+      ]),
+    );
+  }
+}
+
+class OrdersTable extends StatelessWidget {
+  const OrdersTable({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -250,20 +347,19 @@ class CustomDataTable extends StatelessWidget {
       children: [
         _DataTableHeader(),
         _DataTableRow(
-            orderNo: "#13702574",
-            created_date: "04/10/2021",
-            created_time: "02:39",
-            client_name: "Matthew Collins",
-            client_email: "c.matthews@outlook.com",
-        products: "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
-        distribution: "Colorado Springs",
-        status: "Preparing",
+          orderNo: "#13702574",
+          created_date: "04/10/2021",
+          created_time: "02:39",
+          client_name: "Matthew Collins",
+          client_email: "c.matthews@outlook.com",
+          products: "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
+          distribution: "Colorado Springs",
+          status: "Preparing",
           tracking: "705-610844",
           courier: "DHL",
           price: "\$2,198.03",
           card_type: "Credit Card",
           card_numbers: "**** 9171",
-
         ),
         _DataTableRow(
           orderNo: "#13702574",
@@ -279,7 +375,6 @@ class CustomDataTable extends StatelessWidget {
           price: "\$2,198.03",
           card_type: "Credit Card",
           card_numbers: "**** 9171",
-
         ),
         _DataTableRow(
           orderNo: "#13702574",
@@ -295,7 +390,6 @@ class CustomDataTable extends StatelessWidget {
           price: "\$2,198.03",
           card_type: "Credit Card",
           card_numbers: "**** 9171",
-
         ),
         _DataTableRow(
           orderNo: "#13702574",
@@ -311,7 +405,6 @@ class CustomDataTable extends StatelessWidget {
           price: "\$2,198.03",
           card_type: "Credit Card",
           card_numbers: "**** 9171",
-
         ),
         _DataTableRow(
           orderNo: "#13702574",
@@ -327,7 +420,6 @@ class CustomDataTable extends StatelessWidget {
           price: "\$2,198.03",
           card_type: "Credit Card",
           card_numbers: "**** 9171",
-
         ),
         _DataTableRow(
           orderNo: "#13702574",
@@ -343,7 +435,6 @@ class CustomDataTable extends StatelessWidget {
           price: "\$2,198.03",
           card_type: "Credit Card",
           card_numbers: "**** 9171",
-
         ),
         _DataTableRow(
           orderNo: "#13702574",
@@ -359,7 +450,6 @@ class CustomDataTable extends StatelessWidget {
           price: "\$2,198.03",
           card_type: "Credit Card",
           card_numbers: "**** 9171",
-
         ),
         _DataTableRow(
           orderNo: "#13702574",
@@ -375,7 +465,6 @@ class CustomDataTable extends StatelessWidget {
           price: "\$2,198.03",
           card_type: "Credit Card",
           card_numbers: "**** 9171",
-
         ),
         _DataTableRow(
           orderNo: "#13702574",
@@ -391,8 +480,8 @@ class CustomDataTable extends StatelessWidget {
           price: "\$2,198.03",
           card_type: "Credit Card",
           card_numbers: "**** 9171",
-
-        )
+        ),
+        _Pagination()
       ],
     );
   }
