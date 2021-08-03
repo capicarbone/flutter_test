@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BodyPadding extends StatelessWidget {
   final child;
@@ -20,7 +21,7 @@ class H3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(text, style: TextStyle(fontSize: 28,  fontWeight: FontWeight.bold),);
+    return Text(text, style: GoogleFonts.manrope(fontSize: 28,  fontWeight: FontWeight.w700),);
   }
 }
 

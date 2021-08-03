@@ -49,9 +49,9 @@ class _FilterBadge extends StatelessWidget {
   }
 }
 
-class TableFilters extends StatelessWidget {
+class TableQuickFilters extends StatelessWidget {
   final List<Filter> filters;
-  const TableFilters({Key? key, required this.filters}) : super(key: key);
+  const TableQuickFilters({Key? key, required this.filters}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
