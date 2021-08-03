@@ -1,5 +1,7 @@
+import 'package:appevolve_test/models/filter.dart';
 import 'package:appevolve_test/widgets/data_table.dart';
 import 'package:appevolve_test/widgets/helpers.dart';
+import 'package:appevolve_test/widgets/table_filters.dart';
 import 'package:flutter/material.dart';
 
 class OrdersScreen extends StatelessWidget {
@@ -34,9 +36,14 @@ class OrdersScreen extends StatelessWidget {
           children: [
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [Text("Status filters")],
-              ),
+              child: TableFilters(filters: [
+                Filter(name: "All Orders", qty: 294, selected: true),
+                Filter(name: "Preparing", qty: 12),
+                Filter(name: "Sent", qty: 77),
+                Filter(name: "Returned", qty: 14),
+                Filter(name: "Cancelled", qty: 16),
+                Filter(name: "Delivered", qty: 134)
+              ],),
             ),
             SizedBox(
               height: 21,

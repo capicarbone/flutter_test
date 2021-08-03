@@ -4,7 +4,7 @@ const Map<String, int> proportions = {
   'order_no': 1,
   'created': 1,
   'client': 3,
-  'products': 2,
+  'products': 3,
   'distribution': 1,
   'status': 2,
   'tracking': 1,
