@@ -1,3 +1,4 @@
+import 'package:appevolve_test/widgets/helpers.dart';
 import 'package:flutter/material.dart';
 
 const Map<String, int> proportions = {
@@ -96,9 +97,7 @@ class _DataTableRow extends StatelessWidget {
       height: 70,
       padding: EdgeInsets.symmetric(horizontal: 8),
       margin: EdgeInsets.only(top: 8),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(4))),
+      decoration: whiteBoxDecoration,
       child: Row(
         children: [
           Checkbox(value: false, onChanged: (_) {}),
@@ -178,9 +177,7 @@ class _DataTableHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(4)),
-          color: Colors.white),
+      decoration: whiteBoxDecoration,
       height: 40,
       width: double.infinity,
       child: Row(
@@ -303,9 +300,7 @@ class _Pagination extends StatelessWidget {
               height: 40,
               width: 40,
               margin: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(4))),
+              decoration: whiteBoxDecoration,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 4),
@@ -318,18 +313,14 @@ class _Pagination extends StatelessWidget {
               child: Center(child: Icon(Icons.arrow_left),),
               height: 40,
               width: 40,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(4))),
+              decoration: whiteBoxDecoration,
             ),
             Container(
               margin: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
               child: Center(child: Icon(Icons.arrow_right),),
               height: 40,
               width: 40,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(4))),
+              decoration: whiteBoxDecoration
             )
           ],
         )

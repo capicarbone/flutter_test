@@ -37,4 +37,8 @@ class SectionDivider extends StatelessWidget {
   }
 }
 
+const whiteBoxDecoration = BoxDecoration(
+    color: Colors.white,
+    borderRadius: BorderRadius.all(Radius.circular(4)));
+
 

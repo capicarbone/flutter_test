@@ -1,6 +1,7 @@
 import 'package:appevolve_test/models/filter.dart';
 import 'package:appevolve_test/widgets/data_table.dart';
 import 'package:appevolve_test/widgets/helpers.dart';
+import 'package:appevolve_test/widgets/table_filters.dart';
 import 'package:appevolve_test/widgets/table_quick_filters.dart';
 import 'package:flutter/material.dart';
 
@@ -23,9 +24,7 @@ class OrdersScreen extends StatelessWidget {
               SizedBox(
                 height: 16,
               ),
-              Row(
-                children: [Text("Filters")],
-              ),
+              TableFilters(),
             ],
           ),
         ),
