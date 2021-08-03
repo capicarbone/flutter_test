@@ -14,6 +14,7 @@ class AppScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final desktopBody = Row(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Container(
           width: 200,
@@ -24,36 +25,34 @@ class AppScaffold extends StatelessWidget {
     );
 
     final isDesktop = isDesktopDisplay(context);
-    return Container(
-      child: Scaffold(
-        backgroundColor: Color.fromRGBO(240, 240, 240, 1),
-        appBar: (!isDesktop)
-            ? AppBar(
-                title: Text(
-                  "Orders",
-                  textAlign: TextAlign.center,
-                ),
-                centerTitle: true,
-                actions: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Center(
-                        child: Container(
-                      width: 24,
-                      height: 24,
-                      color: Colors.red,
-                    )),
-                  )
-                ],
-              )
-            : null,
-        body: (isDesktop) ? desktopBody : OrdersScreen(),
-        drawer: (!isDesktop)
-            ? Drawer(
-                child: NavigationBar(),
-              )
-            : null,
-      ),
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(240, 240, 240, 1),
+      appBar: (!isDesktop)
+          ? AppBar(
+              title: Text(
+                "Orders",
+                textAlign: TextAlign.center,
+              ),
+              centerTitle: true,
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Center(
+                      child: Container(
+                    width: 24,
+                    height: 24,
+                    color: Colors.red,
+                  )),
+                )
+              ],
+            )
+          : null,
+      body: (isDesktop) ? desktopBody : OrdersScreen(),
+      drawer: (!isDesktop)
+          ? Drawer(
+              child: NavigationBar(),
+            )
+          : null,
     );
   }
 }
