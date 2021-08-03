@@ -1,6 +1,7 @@
 import 'package:appevolve_test/models/filter.dart';
 import 'package:appevolve_test/widgets/data_table.dart';
 import 'package:appevolve_test/widgets/helpers.dart';
+import 'package:appevolve_test/widgets/section_header.dart';
 import 'package:appevolve_test/widgets/table_filters.dart';
 import 'package:appevolve_test/widgets/table_quick_filters.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class OrdersScreen extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              H3(text: "Orders"),
+              SectionHeader(title: "Orders",),
               SizedBox(
                 height: 16,
               ),
