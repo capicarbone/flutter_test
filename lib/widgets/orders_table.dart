@@ -392,6 +392,7 @@ class _Pagination extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDesktop = isDesktopDisplay(context);
     return Container(
       margin: EdgeInsets.only(top: 20),
       child: Row(
@@ -399,6 +400,7 @@ class _Pagination extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("1-20 of 294"),
+            if (isDesktop)
             OutlinedButton(
               onPressed: () {},
               child: Padding(

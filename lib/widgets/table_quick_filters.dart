@@ -30,17 +30,20 @@ class _FilterBadge extends StatelessWidget {
 
           // Quantity marker
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+            height: 20,
+            padding: EdgeInsets.symmetric(horizontal: 6),
             margin: EdgeInsets.only(left: 8),
             decoration: BoxDecoration(
                 color: textColor,
                 borderRadius: BorderRadius.all(Radius.circular(100))),
-            child: Text(
-              filter.qty.toString(),
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 10,
-                  fontWeight: FontWeight.w700),
+            child: Center(
+              child: Text(
+                filter.qty.toString(),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700),
+              ),
             ),
           )
         ],

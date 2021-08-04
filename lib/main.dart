@@ -34,6 +34,7 @@ class AppScaffold extends StatelessWidget {
               title: Text(
                 "Orders",
                 textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20) ,
               ),
               centerTitle: true,
               actions: [
