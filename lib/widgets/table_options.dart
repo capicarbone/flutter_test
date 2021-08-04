@@ -56,46 +56,46 @@ class TableOptions extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 40,
-          child: Row(
+          child: Wrap(
+            spacing: 8,
+            runSpacing: 8,
             children: [
-              Expanded(
-                flex: 1,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 19),
-                  decoration: whiteBoxDecoration,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(Icons.search),
-                      SizedBox(
-                        width: 10,
+              Container(
+                height: 40,
+                width: isDesktop ? 404 : double.infinity,
+                padding: EdgeInsets.symmetric(horizontal: 19),
+                decoration: whiteBoxDecoration,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(Icons.search),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Flexible(
+                      child: const TextField(
+                        style: TextStyle(fontSize: 12),
+                        decoration: InputDecoration(
+                            contentPadding:
+                                EdgeInsets.symmetric(vertical: 14),
+                            hintStyle: TextStyle(
+                                fontSize: 12,
+                                color: Color.fromRGBO(140, 138, 152, 1)),
+                            border: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            hintText: "Search by any order parameter"),
                       ),
-                      Expanded(
-                        child: const TextField(
-                          style: TextStyle(fontSize: 12),
-                          decoration: InputDecoration(
-                              contentPadding:
-                                  EdgeInsets.symmetric(vertical: 18),
-                              hintStyle: TextStyle(
-                                  fontSize: 12,
-                                  color: Color.fromRGBO(140, 138, 152, 1)),
-                              border: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                              errorBorder: InputBorder.none,
-                              disabledBorder: InputBorder.none,
-                              hintText: "Search by any order parameter"),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               if (isDesktop)
                 ..._filters
                     .map((e) => Container(
-                        margin: EdgeInsets.only(left: 8),
+                        //margin: EdgeInsets.only(left: 8),
                         width: 186,
                         child: CustomButton(
                           text: e['title']!,
