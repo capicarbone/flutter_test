@@ -20,7 +20,9 @@ class AppScaffold extends StatelessWidget {
           width: 200,
           child: NavigationBar(),
         ),
-        Expanded(child: OrdersScreen())
+        Expanded(child: SingleChildScrollView(
+          child: OrdersScreen(),
+        ))
       ],
     );
 
@@ -47,7 +49,7 @@ class AppScaffold extends StatelessWidget {
               ],
             )
           : null,
-      body: (isDesktop) ? desktopBody : OrdersScreen(),
+      body: (isDesktop) ? desktopBody : SingleChildScrollView(child: OrdersScreen()),
       drawer: (!isDesktop)
           ? Drawer(
               child: NavigationBar(),

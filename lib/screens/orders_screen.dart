@@ -1,5 +1,5 @@
 import 'package:appevolve_test/models/filter.dart';
-import 'package:appevolve_test/widgets/data_table.dart';
+import 'package:appevolve_test/widgets/orders_table.dart';
 import 'package:appevolve_test/widgets/helpers.dart';
 import 'package:appevolve_test/widgets/section_header.dart';
 import 'package:appevolve_test/widgets/table_filters.dart';

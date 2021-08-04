@@ -1,3 +1,4 @@
+import 'package:appevolve_test/widgets/custom_button.dart';
 import 'package:appevolve_test/widgets/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -35,6 +36,21 @@ class _TableSelect extends StatelessWidget {
     );
   }
 }
+
+const _filters = [
+  {
+    'title': 'Date Range'
+  },
+  {
+    'title': 'Date Range'
+  },
+  {
+    'title': 'Date Range'
+  },
+  {
+    'title': 'Date Range'
+  }
+];
 
 class TableFilters extends StatelessWidget {
   const TableFilters({Key? key}) : super(key: key);
@@ -77,16 +93,11 @@ class TableFilters extends StatelessWidget {
               ),
             ),
           ),
-          _TableSelect(title: "Date Range"),
-          _TableSelect(
-            title: "Order Status",
-          ),
-          _TableSelect(
-            title: "Distribution City",
-          ),
-          _TableSelect(
-            title: "More Filters",
-          )
+          ..._filters.map((e) => Container(
+            margin: EdgeInsets.only(left: 8),
+              width: 186,
+              child: CustomButton(text: e['title']!, isDropdown: true,))).toList()
+
         ],
       ),
     );
