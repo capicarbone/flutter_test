@@ -32,8 +32,7 @@ class _NavItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5),
-      color:
-          (selected) ? COLOR_RED.withOpacity(0.25) : Colors.transparent,
+      color: (selected) ? COLOR_RED.withOpacity(0.25) : Colors.transparent,
       height: 50,
       child: Stack(
         children: [
@@ -144,7 +143,9 @@ class NavigationBar extends StatelessWidget {
               children: [
                 _AppLogo(),
                 _Divider(),
-                SizedBox(height: 8,),
+                SizedBox(
+                  height: 8,
+                ),
                 _NavItem(text: "Dashboard", icon: AEIcons.dashboard),
                 _NavItem(
                   text: "Orders",

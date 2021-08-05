@@ -41,4 +41,7 @@ class AEIcons {
   static const IconData status = IconData(0xe811, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData store = IconData(0xe812, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData support = IconData(0xe813, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData up = IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData dropdown = IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData down = IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
