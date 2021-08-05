@@ -12,6 +12,10 @@
 ///       - asset: fonts/AEIcons.ttf
 ///
 /// 
+/// * Material Design Icons, Copyright (C) Google, Inc
+///         Author:    Google
+///         License:   Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+///         Homepage:  https://design.google.com/icons/
 ///
 import 'package:flutter/widgets.dart';
 
@@ -41,7 +45,7 @@ class AEIcons {
   static const IconData status = IconData(0xe811, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData store = IconData(0xe812, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData support = IconData(0xe813, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData up = IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData dropdown = IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData down = IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData expand_more = IconData(0xe817, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData arrow_drop_down = IconData(0xe818, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData arrow_drop_up = IconData(0xe819, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
