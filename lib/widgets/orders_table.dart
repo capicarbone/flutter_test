@@ -199,7 +199,7 @@ class _DataCell extends StatelessWidget {
   }
 }
 
-class _DataTableRow extends StatelessWidget {
+class _OrderItem extends StatelessWidget {
   final String orderNo;
   final String created_date;
   final String created_time;
@@ -214,7 +214,7 @@ class _DataTableRow extends StatelessWidget {
   final String card_type;
   final String card_number;
 
-  const _DataTableRow(
+  const _OrderItem(
       {Key? key,
       required this.orderNo,
       required this.created_date,
@@ -231,8 +231,7 @@ class _DataTableRow extends StatelessWidget {
       required this.card_number})
       : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildRow(BuildContext context) {
     return Container(
       height: 70,
       padding: EdgeInsets.symmetric(horizontal: 8),
@@ -307,6 +306,104 @@ class _DataTableRow extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Widget _buildTable(BuildContext context) {
+    final Map<String, String> fields = {
+      'Client Name': client_name,
+      'Client Email': client_email,
+      'Delivery Company': courier,
+      'Tracking Code': tracking,
+      'Products': products,
+      'Price': price,
+      'Payment Method': "$card_type, $card_number"
+    };
+
+    return Container(
+      decoration: whiteBoxDecoration,
+      padding: EdgeInsets.all(8),
+      margin: EdgeInsets.only(bottom: 16),
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 8, bottom: 16, left: 8, right: 8),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                          color: Colors.amber,
+                          borderRadius: BorderRadius.circular(15)),
+                      margin: EdgeInsets.only(right: 8),
+                    ),
+                    Text(
+                      orderNo,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                          color: COLOR_SUPER_DARK_BLUE),
+                    )
+                  ],
+                ),
+                _StatusBadge(status: status)
+              ],
+            ),
+          ),
+          SectionDivider(),
+          Container(
+            padding: EdgeInsets.only(left: 8, right: 8, top: 10, bottom: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "$created_date, $created_time",
+                  style: TextStyle(fontSize: 12, color: COLOR_MEDIUM_GRAY),
+                ),
+                Text(distribution,
+                    style: TextStyle(fontSize: 12, color: COLOR_MEDIUM_GRAY))
+              ],
+            ),
+          ),
+          ...fields.entries.toList().asMap().entries.map((e) => Container(
+                decoration:
+                    e.key % 2 == 0 ? greyBoxDecoration : whiteBoxDecoration,
+                constraints: BoxConstraints(minHeight: 30),
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      e.value.key,
+                      style: TextStyle(fontSize: 12, color: COLOR_MEDIUM_GRAY),
+                    ),
+                    Expanded(
+                      child: Text(
+                        e.value.value,
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: COLOR_SUPER_DARK_BLUE,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ))
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isDesktop = isDesktopDisplay(context);
+
+    return (isDesktop) ? _buildRow(context) : _buildTable(context);
   }
 }
 
@@ -401,38 +498,38 @@ class _Pagination extends StatelessWidget {
           children: [
             Text("1-20 of 294"),
             if (isDesktop)
-            OutlinedButton(
-              onPressed: () {},
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 6, horizontal: 20),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 26,
-                      child: Center(
-                        child: Text(
-                          "Next Page",
-                          style: TextStyle(fontSize: 14),
+              OutlinedButton(
+                onPressed: () {},
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 6, horizontal: 20),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 26,
+                        child: Center(
+                          child: Text(
+                            "Next Page",
+                            style: TextStyle(fontSize: 14),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    Icon(Icons.arrow_forward)
-                  ],
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Icon(Icons.arrow_forward)
+                    ],
+                  ),
                 ),
+                style: ButtonStyle(
+                    padding: MaterialStateProperty.all<EdgeInsets>(
+                        EdgeInsets.symmetric(horizontal: 0, vertical: 0)),
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white),
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        Theme.of(context).accentColor)),
               ),
-              style: ButtonStyle(
-                  padding: MaterialStateProperty.all<EdgeInsets>(
-                      EdgeInsets.symmetric(horizontal: 0, vertical: 0)),
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white),
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                      Theme.of(context).accentColor)),
-            ),
             Row(
               children: [
                 Container(
@@ -488,140 +585,14 @@ class _StatusBadge extends StatelessWidget {
       height: 30,
       padding: EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
-        color: Colors.amber.withOpacity(0.25),
-        borderRadius: BorderRadius.circular(100)
-      ),
+          color: Colors.amber.withOpacity(0.25),
+          borderRadius: BorderRadius.circular(100)),
       child: Center(
         child: Text(
           status,
           style: TextStyle(
               color: Colors.amber, fontSize: 12, fontWeight: FontWeight.w600),
         ),
-      ),
-    );
-  }
-}
-
-class _OrderColumn extends StatelessWidget {
-  final String orderNo;
-  final String created_date;
-  final String created_time;
-  final String client_name;
-  final String client_email;
-  final String products;
-  final String distribution;
-  final String status;
-  final String tracking;
-  final String courier;
-  final String price;
-  final String card_type;
-  final String card_number;
-
-  const _OrderColumn(
-      {Key? key,
-      required this.orderNo,
-      required this.created_date,
-      required this.created_time,
-      required this.client_name,
-      required this.client_email,
-      required this.products,
-      required this.distribution,
-      required this.status,
-      required this.tracking,
-      required this.courier,
-      required this.price,
-      required this.card_type,
-      required this.card_number})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final Map<String, String> fields = {
-      'Client Name': client_name,
-      'Client Email': client_email,
-      'Delivery Company': courier,
-      'Tracking Code': tracking,
-      'Products': products,
-      'Price': price,
-      'Payment Method': "$card_type, $card_number"
-    };
-
-    return Container(
-      decoration: whiteBoxDecoration,
-      padding: EdgeInsets.all(8),
-      margin: EdgeInsets.only(bottom: 16),
-      child: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 8, bottom: 16, left: 8, right: 8),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                          color: Colors.amber,
-                          borderRadius: BorderRadius.circular(15)),
-                      margin: EdgeInsets.only(right: 8),
-                    ),
-                    Text(
-                      orderNo,
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                          color: COLOR_SUPER_DARK_BLUE),
-                    )
-                  ],
-                ),
-                _StatusBadge(status: status)
-              ],
-            ),
-          ),
-          SectionDivider(),
-          Container(
-            padding: EdgeInsets.only(left: 8, right: 8, top: 10, bottom: 15),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "$created_date, $created_time",
-                  style: TextStyle(fontSize: 12, color: COLOR_MEDIUM_GRAY),
-                ),
-                Text(distribution,
-                    style: TextStyle(fontSize: 12, color: COLOR_MEDIUM_GRAY))
-              ],
-            ),
-          ),
-          ...fields.entries.toList().asMap().entries.map((e) => Container(
-                decoration:
-                    e.key % 2 == 0 ? greyBoxDecoration : whiteBoxDecoration,
-                constraints: BoxConstraints(
-                  minHeight: 30
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      e.value.key,
-                      style: TextStyle(fontSize: 12, color: COLOR_MEDIUM_GRAY),
-                    ),
-                    Expanded(
-                      child: Text(
-                        e.value.value,
-                        textAlign: TextAlign.right,
-                        style:
-                            TextStyle(fontSize: 12, color: COLOR_SUPER_DARK_BLUE,),
-                      ),
-                    )
-                  ],
-                ),
-              ))
-        ],
       ),
     );
   }
@@ -636,38 +607,21 @@ class OrdersTable extends StatelessWidget {
     return Column(
       children: [
         if (isDesktop) _DataTableHeader(),
-        if (isDesktop)
-          ...orders.map((e) => _DataTableRow(
-                orderNo: e['orderNo']!,
-                created_date: e['created_date']!,
-                created_time: e['created_time']!,
-                client_name: e['client_name']!,
-                client_email: e['client_email']!,
-                products: e['products']!,
-                distribution: e['distribution']!,
-                status: e['status']!,
-                tracking: e['tracking']!,
-                courier: e['courier']!,
-                price: e['price']!,
-                card_type: e['card_type']!,
-                card_number: e['card_number']!,
-              )),
-        if (!isDesktop)
-          ...orders.map((e) => _OrderColumn(
-                orderNo: e['orderNo']!,
-                created_date: e['created_date']!,
-                created_time: e['created_time']!,
-                client_name: e['client_name']!,
-                client_email: e['client_email']!,
-                products: e['products']!,
-                distribution: e['distribution']!,
-                status: e['status']!,
-                tracking: e['tracking']!,
-                courier: e['courier']!,
-                price: e['price']!,
-                card_type: e['card_type']!,
-                card_number: e['card_number']!,
-              )),
+        ...orders.map((e) => _OrderItem(
+              orderNo: e['orderNo']!,
+              created_date: e['created_date']!,
+              created_time: e['created_time']!,
+              client_name: e['client_name']!,
+              client_email: e['client_email']!,
+              products: e['products']!,
+              distribution: e['distribution']!,
+              status: e['status']!,
+              tracking: e['tracking']!,
+              courier: e['courier']!,
+              price: e['price']!,
+              card_type: e['card_type']!,
+              card_number: e['card_number']!,
+            )),
         _Pagination()
       ],
     );
