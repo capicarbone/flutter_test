@@ -1,4 +1,6 @@
+import 'package:appevolve_test/a_e_icons_icons.dart';
 import 'package:appevolve_test/adaptive.dart';
+import 'package:appevolve_test/colors.dart';
 import 'package:appevolve_test/widgets/custom_button.dart';
 import 'package:appevolve_test/widgets/helpers.dart';
 import 'package:flutter/material.dart';
@@ -41,10 +43,10 @@ class _TableSelect extends StatelessWidget {
 }
 
 const _filters = [
-  {'title': 'Date Range'},
-  {'title': 'Date Range'},
-  {'title': 'Date Range'},
-  {'title': 'Date Range'}
+  {'title': 'Date Range', 'icon': AEIcons.date},
+  {'title': 'Order Status', 'icon': AEIcons.status},
+  {'title': 'Distribution City', 'icon': AEIcons.distribution},
+  {'title': 'More Filters', 'icon': AEIcons.filter}
 ];
 
 class TableOptions extends StatelessWidget {
@@ -68,7 +70,7 @@ class TableOptions extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(Icons.search),
+                    Icon(AEIcons.seach, color: COLOR_MEDIUM_GRAY, size: 17,),
                     SizedBox(
                       width: 10,
                     ),
@@ -76,8 +78,7 @@ class TableOptions extends StatelessWidget {
                       child: const TextField(
                         style: TextStyle(fontSize: 12),
                         decoration: InputDecoration(
-                            contentPadding:
-                                EdgeInsets.symmetric(vertical: 14),
+                            contentPadding: EdgeInsets.symmetric(vertical: 18),
                             hintStyle: TextStyle(
                                 fontSize: 12,
                                 color: Color.fromRGBO(140, 138, 152, 1)),
@@ -98,7 +99,8 @@ class TableOptions extends StatelessWidget {
                         //margin: EdgeInsets.only(left: 8),
                         width: 186,
                         child: CustomButton(
-                          text: e['title']!,
+                          text: e['title'].toString()!,
+                          icon: (e['icon'] as IconData),
                           isDropdown: true,
                         )))
                     .toList()
@@ -112,11 +114,19 @@ class TableOptions extends StatelessWidget {
         if (!isDesktop)
           Row(
             children: [
-              Expanded(child: CustomButton(text: 'Filters')),
+              Expanded(
+                  child: CustomButton(
+                text: 'Filters',
+                icon: AEIcons.filter,
+              )),
               SizedBox(
                 width: 16,
               ),
-              Expanded(child: CustomButton(text: 'Sort')),
+              Expanded(
+                  child: CustomButton(
+                text: 'Sort',
+                icon: AEIcons.filter,
+              )),
             ],
           )
       ],
