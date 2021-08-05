@@ -66,15 +66,16 @@ class _AppLogo extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 32, bottom: 32),
       child: Center(
-        child: Text(
-          "AppEvolve",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
+        child: Container(
+            width: 160,
+            height: 31,
+            child: Image(
+              image: AssetImage('appevolve_logo.png'),
+            )),
       ),
     );
   }
 }
-
 
 class _NavFooter extends StatelessWidget {
   const _NavFooter({Key? key}) : super(key: key);
