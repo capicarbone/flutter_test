@@ -1,3 +1,4 @@
+import 'package:appevolve_test/a_e_icons_icons.dart';
 import 'package:appevolve_test/colors.dart';
 import 'package:appevolve_test/widgets/avatar.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ class _Divider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromRGBO(140, 138, 152, 1),
+      color: COLOR_MEDIUM_GRAY.withOpacity(0.5),
       height: 1,
     );
   }
@@ -18,22 +19,28 @@ class _Divider extends StatelessWidget {
 
 class _NavItem extends StatelessWidget {
   final String text;
+  final IconData icon;
   final bool selected;
-  const _NavItem({Key? key, required this.text, this.selected = false})
-      : super(key: key);
+  const _NavItem({
+    Key? key,
+    required this.text,
+    required this.icon,
+    this.selected = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 5),
       color:
-          (selected) ? Color.fromRGBO(255, 82, 70, 0.25) : Colors.transparent,
+          (selected) ? COLOR_RED.withOpacity(0.25) : Colors.transparent,
       height: 50,
       child: Stack(
         children: [
           if (selected)
             Container(
               width: 5,
-              color: Color.fromRGBO(255, 82, 70, 1),
+              color: COLOR_RED,
             ),
           Center(
             child: Padding(
@@ -41,14 +48,18 @@ class _NavItem extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.account_balance,
+                      icon,
                       color: Colors.white,
+                      size: 20,
                     ),
                     SizedBox(
                       width: 18.83,
                     ),
                     Text(text,
-                        style: TextStyle(color: Colors.white, fontSize: 16))
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600))
                   ],
                 )),
           ),
@@ -88,11 +99,27 @@ class _NavFooter extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Avatar(),
-              Text(
-                "Admin",
-                style: TextStyle(color: Colors.white),
+              Row(
+                children: [
+                  Avatar(),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    "Admin",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600),
+                  )
+                ],
+              ),
+              Icon(
+                AEIcons.settings,
+                color: Colors.white,
+                size: 18,
               )
             ],
           ),
@@ -117,20 +144,22 @@ class NavigationBar extends StatelessWidget {
               children: [
                 _AppLogo(),
                 _Divider(),
-                SizedBox(
-                  height: 13,
-                ),
-                _NavItem(text: "Dashboard"),
+                SizedBox(height: 8,),
+                _NavItem(text: "Dashboard", icon: AEIcons.dashboard),
                 _NavItem(
                   text: "Orders",
                   selected: true,
+                  icon: AEIcons.order,
                 ),
-                _NavItem(text: "Products"),
-                _NavItem(text: "Clients"),
-                _NavItem(text: "Stores"),
-                _NavItem(text: "Promo Codes"),
-                _NavItem(text: "Reports"),
-                _NavItem(text: "Support"),
+                _NavItem(
+                  text: "Products",
+                  icon: AEIcons.product,
+                ),
+                _NavItem(text: "Clients", icon: AEIcons.client),
+                _NavItem(text: "Stores", icon: AEIcons.store),
+                _NavItem(text: "Promo Codes", icon: AEIcons.promo),
+                _NavItem(text: "Reports", icon: AEIcons.report),
+                _NavItem(text: "Support", icon: AEIcons.support),
               ],
             ),
           ),
