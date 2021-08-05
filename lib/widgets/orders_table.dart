@@ -1,5 +1,6 @@
 import 'package:appevolve_test/adaptive.dart';
 import 'package:appevolve_test/colors.dart';
+import 'package:appevolve_test/widgets/chip.dart';
 import 'package:appevolve_test/widgets/helpers.dart';
 import 'package:flutter/material.dart';
 
@@ -274,9 +275,12 @@ class _OrderItem extends StatelessWidget {
             flex: proportions['distribution']!,
           ),
           Expanded(
-            child: _DataCell(
-              text: status,
-            ),
+            child: Container(child:
+              Row(
+                children: [
+                  _StatusBadge(status: status,),
+                ],
+              ),),
             flex: proportions['status']!,
           ),
           Expanded(
@@ -581,20 +585,7 @@ class _StatusBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 30,
-      padding: EdgeInsets.symmetric(horizontal: 16),
-      decoration: BoxDecoration(
-          color: Colors.amber.withOpacity(0.25),
-          borderRadius: BorderRadius.circular(100)),
-      child: Center(
-        child: Text(
-          status,
-          style: TextStyle(
-              color: Colors.amber, fontSize: 12, fontWeight: FontWeight.w600),
-        ),
-      ),
-    );
+    return CustomChip(text: status);
   }
 }
 
