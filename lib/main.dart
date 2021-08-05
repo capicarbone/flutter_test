@@ -1,4 +1,5 @@
 import 'package:appevolve_test/screens/orders_screen.dart';
+import 'package:appevolve_test/widgets/avatar.dart';
 import 'package:flutter/material.dart';
 import 'adaptive.dart';
 import 'widgets/navigation_bar.dart';
@@ -41,11 +42,7 @@ class AppScaffold extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: Center(
-                      child: Container(
-                    width: 24,
-                    height: 24,
-                    color: Colors.red,
-                  )),
+                      child: Avatar()),
                 )
               ],
             )
@@ -64,6 +61,7 @@ class AppEvolveTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'AppEvolve',
       theme: ThemeData(
           fontFamily: GoogleFonts.manrope().fontFamily,

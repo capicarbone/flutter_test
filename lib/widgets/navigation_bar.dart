@@ -1,5 +1,5 @@
-
-
+import 'package:appevolve_test/colors.dart';
+import 'package:appevolve_test/widgets/avatar.dart';
 import 'package:flutter/material.dart';
 
 import '../adaptive.dart';
@@ -26,7 +26,7 @@ class _NavItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color:
-      (selected) ? Color.fromRGBO(255, 82, 70, 0.25) : Colors.transparent,
+          (selected) ? Color.fromRGBO(255, 82, 70, 0.25) : Colors.transparent,
       height: 50,
       child: Stack(
         children: [
@@ -75,6 +75,7 @@ class _AppLogo extends StatelessWidget {
   }
 }
 
+
 class _NavFooter extends StatelessWidget {
   const _NavFooter({Key? key}) : super(key: key);
 
@@ -87,6 +88,7 @@ class _NavFooter extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Row(
             children: [
+              Avatar(),
               Text(
                 "Admin",
                 style: TextStyle(color: Colors.white),
