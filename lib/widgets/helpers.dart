@@ -34,7 +34,7 @@ class SectionDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 1,
-      color: COLOR_MEDIUM_GRAY.withOpacity(0.25),
+      color: AEColors.mediumGray.withOpacity(0.25),
     );
   }
 }

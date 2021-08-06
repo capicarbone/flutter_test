@@ -184,7 +184,7 @@ class _HeaderCell extends StatelessWidget {
           style: TextStyle(
               fontSize: 10,
               fontWeight: FontWeight.w500,
-              color: (selectedAsc) ? COLOR_SUPER_DARK_BLUE : COLOR_MEDIUM_GRAY),
+              color: (selectedAsc) ? AEColors.superDarkBlue : AEColors.mediumGray),
         ),
         SizedBox(
           width: 4,
@@ -197,7 +197,7 @@ class _HeaderCell extends StatelessWidget {
               Icon(
                 AEIcons.up,
                 size: 5,
-                color: (selectedAsc) ? COLOR_MEDIUM_GRAY : COLOR_LIGHT_GRAY,
+                color: (selectedAsc) ? AEColors.mediumGray : AEColors.lightGray,
               ),
               SizedBox(
                 height: 2,
@@ -205,7 +205,7 @@ class _HeaderCell extends StatelessWidget {
               Icon(
                 AEIcons.down,
                 size: 5,
-                color: COLOR_LIGHT_GRAY,
+                color: AEColors.lightGray,
               )
             ],
           ),
@@ -245,7 +245,7 @@ class _DataCell extends StatelessWidget {
         if (subText != null)
           Text(subText!,
               style: TextStyle(
-                  fontSize: 12, color: COLOR_MEDIUM_GRAY ))
+                  fontSize: 12, color: AEColors.mediumGray ))
       ],
     );
   }
@@ -311,7 +311,7 @@ class __OrderItemState extends State<_OrderItem> {
         decoration: whiteBoxDecoration.copyWith(
           boxShadow: [
             if (checked)
-            BoxShadow(color: COLOR_MEDIUM_GRAY.withAlpha(50),
+            BoxShadow(color: AEColors.mediumGray.withAlpha(50),
             blurRadius: 10)
           ]
         ),
@@ -388,17 +388,17 @@ class __OrderItemState extends State<_OrderItem> {
             Expanded(
               child: Row(children: [
                 Container(height: 4, width: 4, decoration: BoxDecoration(
-                    color: COLOR_SUPER_DARK_BLUE,
+                    color: AEColors.superDarkBlue,
                     borderRadius: BorderRadius.circular(4)
                 ),),
                 SizedBox(width: 4,),
                 Container(height: 4, width: 4, decoration: BoxDecoration(
-                    color: COLOR_SUPER_DARK_BLUE,
+                    color: AEColors.superDarkBlue,
                     borderRadius: BorderRadius.circular(4)
                 ),),
                 SizedBox(width: 4,),
                 Container(height: 4, width: 4, decoration: BoxDecoration(
-                    color: COLOR_SUPER_DARK_BLUE,
+                    color: AEColors.superDarkBlue,
                     borderRadius: BorderRadius.circular(4)
                 ),)
               ],),
@@ -449,7 +449,7 @@ class __OrderItemState extends State<_OrderItem> {
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
-                          color: COLOR_SUPER_DARK_BLUE),
+                          color: AEColors.superDarkBlue),
                     )
                   ],
                 ),
@@ -465,10 +465,10 @@ class __OrderItemState extends State<_OrderItem> {
               children: [
                 Text(
                   "${widget.created_date}, ${widget.created_time}",
-                  style: TextStyle(fontSize: 12, color: COLOR_MEDIUM_GRAY),
+                  style: TextStyle(fontSize: 12, color: AEColors.mediumGray),
                 ),
                 Text(widget.distribution,
-                    style: TextStyle(fontSize: 12, color: COLOR_MEDIUM_GRAY))
+                    style: TextStyle(fontSize: 12, color: AEColors.mediumGray))
               ],
             ),
           ),
@@ -482,7 +482,7 @@ class __OrderItemState extends State<_OrderItem> {
                   children: [
                     Text(
                       e.value.key,
-                      style: TextStyle(fontSize: 12, color: COLOR_MEDIUM_GRAY),
+                      style: TextStyle(fontSize: 12, color: AEColors.mediumGray),
                     ),
                     Expanded(
                       child: Text(
@@ -490,7 +490,7 @@ class __OrderItemState extends State<_OrderItem> {
                         textAlign: TextAlign.right,
                         style: TextStyle(
                           fontSize: 12,
-                          color: COLOR_SUPER_DARK_BLUE,
+                          color: AEColors.superDarkBlue,
                         ),
                       ),
                     )
@@ -667,7 +667,7 @@ class _Pagination extends StatelessWidget {
                     child: Icon(
                       AEIcons.back,
                       size: 14,
-                      color: COLOR_TURQUOISE.withOpacity(0.25),
+                      color: AEColors.turquoise.withOpacity(0.25),
                     ),
                   ),
                   height: 40,
@@ -680,7 +680,7 @@ class _Pagination extends StatelessWidget {
                       child: Icon(
                         AEIcons.next,
                         size: 14,
-                        color: COLOR_TURQUOISE,
+                        color: AEColors.turquoise,
                       ),
                     ),
                     height: 40,
@@ -703,15 +703,15 @@ class _StatusBadge extends StatelessWidget {
     Color color;
     switch (status){
       case 'Preparing':
-        color = COLOR_ORANGE; break;
+        color = AEColors.orange; break;
       case 'Sent':
-        color = COLOR_BLUE; break;
+        color = AEColors.blue; break;
       case 'Returned':
-        color = COLOR_DARK_BLUE; break;
+        color = AEColors.darkBlue; break;
       case 'Cancelled':
-        color = COLOR_RED; break;
+        color = AEColors.red; break;
       default:
-        color = COLOR_TURQUOISE;
+        color = AEColors.turquoise;
     }
 
     return CustomChip(text: status, color: color,);

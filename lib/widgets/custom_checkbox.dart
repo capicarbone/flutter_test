@@ -15,7 +15,7 @@ class CustomCheckbox extends StatelessWidget {
       height: 24,
       child: checked ? Center(child: Icon(AEIcons.checked, color: Colors.white, size: 14,),) : null,
       decoration: BoxDecoration(
-          color: checked ? COLOR_TURQUOISE : COLOR_LIGHTER_GRAY,
+          color: checked ? AEColors.turquoise : AEColors.lighterGray,
           borderRadius: BorderRadius.all(Radius.circular(4))),
     );
   }

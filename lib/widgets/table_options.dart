@@ -31,7 +31,7 @@ class _TableSelect extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                    fontSize: 12, color: COLOR_MEDIUM_GRAY ),
+                    fontSize: 12, color: AEColors.mediumGray ),
               )
             ],
           ),
@@ -70,7 +70,7 @@ class TableOptions extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(AEIcons.seach, color: COLOR_MEDIUM_GRAY, size: 17,),
+                    Icon(AEIcons.seach, color: AEColors.mediumGray, size: 17,),
                     SizedBox(
                       width: 10,
                     ),
@@ -81,7 +81,7 @@ class TableOptions extends StatelessWidget {
                             contentPadding: EdgeInsets.symmetric(vertical: 18),
                             hintStyle: TextStyle(
                                 fontSize: 12,
-                                color: COLOR_MEDIUM_GRAY ),
+                                color: AEColors.mediumGray ),
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,

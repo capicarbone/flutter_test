@@ -11,7 +11,7 @@ class _Divider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: COLOR_MEDIUM_GRAY.withOpacity(0.5),
+      color: AEColors.mediumGray.withOpacity(0.5),
       height: 1,
     );
   }
@@ -32,14 +32,14 @@ class _NavItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5),
-      color: (selected) ? COLOR_RED.withOpacity(0.25) : Colors.transparent,
+      color: (selected) ? AEColors.red.withOpacity(0.25) : Colors.transparent,
       height: 50,
       child: Stack(
         children: [
           if (selected)
             Container(
               width: 5,
-              color: COLOR_RED,
+              color: AEColors.red,
             ),
           Center(
             child: Padding(

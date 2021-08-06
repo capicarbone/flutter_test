@@ -30,7 +30,7 @@ class AppScaffold extends StatelessWidget {
 
     final isDesktop = isDesktopDisplay(context);
     return Scaffold(
-      backgroundColor: COLOR_LIGHTER_GRAY,
+      backgroundColor: AEColors.lighterGray,
       appBar: (!isDesktop)
           ? AppBar(
               title: Text(
@@ -66,8 +66,8 @@ class AppEvolveTest extends StatelessWidget {
       title: 'AppEvolve',
       theme: ThemeData(
           fontFamily: GoogleFonts.manrope().fontFamily,
-          primaryColor: COLOR_SUPER_DARK_BLUE,
-          accentColor: COLOR_TURQUOISE),
+          primaryColor: AEColors.superDarkBlue,
+          accentColor: AEColors.turquoise),
       home: AppScaffold(),
     );
   }

@@ -35,7 +35,7 @@ class CustomButton extends StatelessWidget {
                 size: 16,
                 color: highlighted
                     ? Theme.of(context).accentColor
-                    : COLOR_MEDIUM_GRAY,
+                    : AEColors.mediumGray,
               ),
               SizedBox(
                 width: 8,
@@ -47,7 +47,7 @@ class CustomButton extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                     color: highlighted
                         ? Theme.of(context).accentColor
-                        : COLOR_MEDIUM_GRAY),
+                        : AEColors.mediumGray),
               ),
             ],
           ),
@@ -62,7 +62,7 @@ class CustomButton extends StatelessWidget {
                   size: 20,
                   color: highlighted
                       ? Theme.of(context).accentColor
-                      : COLOR_MEDIUM_GRAY,
+                      : AEColors.mediumGray,
                 )
               ],
             )

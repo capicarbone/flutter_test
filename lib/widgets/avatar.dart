@@ -23,7 +23,7 @@ class Avatar extends StatelessWidget {
             width: isDesktop ? 12 : 7,
             height: isDesktop ? 12 : 7,
             decoration: BoxDecoration(
-                color: COLOR_TURQUOISE, borderRadius: BorderRadius.circular(12)),
+                color: AEColors.turquoise, borderRadius: BorderRadius.circular(12)),
           ), right: 0, bottom: 0,),
       ],
     );

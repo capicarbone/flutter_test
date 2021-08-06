@@ -11,14 +11,14 @@ class _FilterBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final textColor = filter.selected
         ? Theme.of(context).accentColor
-        : COLOR_MEDIUM_GRAY ;
+        : AEColors.mediumGray ;
     return Container(
       margin: EdgeInsets.only(right: 22),
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(4)),
           color: filter.selected
-              ? COLOR_TURQUOISE.withOpacity(0.25)
+              ? AEColors.turquoise.withOpacity(0.25)
               : Colors.transparent),
       child: Row(
         children: [
