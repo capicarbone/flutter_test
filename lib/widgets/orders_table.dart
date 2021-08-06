@@ -240,6 +240,7 @@ class _DataCell extends StatelessWidget {
             TextSpan(
                 text: text,
                 style: TextStyle(
+                  color: AEColors.superDarkBlue,
                     fontWeight:
                         (highlighted) ? FontWeight.w600 : FontWeight.normal)),
             if (highlightedText != null)
