@@ -2,19 +2,20 @@ import 'package:appevolve_test/a_e_icons_icons.dart';
 import 'package:appevolve_test/adaptive.dart';
 import 'package:appevolve_test/colors.dart';
 import 'package:appevolve_test/widgets/chip.dart';
+import 'package:appevolve_test/widgets/custom_checkbox.dart';
 import 'package:appevolve_test/widgets/helpers.dart';
 import 'package:flutter/material.dart';
 
 const Map<String, int> proportions = {
-  'order_no': 1,
-  'created': 1,
-  'client': 3,
-  'products': 3,
-  'distribution': 1,
-  'status': 2,
-  'tracking': 1,
-  'price': 1,
-  'payment': 1
+  'order_no': 4,
+  'created': 4,
+  'client': 7,
+  'products': 7,
+  'distribution': 5,
+  'status': 5,
+  'tracking': 3,
+  'price': 4,
+  'payment': 3
 };
 
 const List<Map<String, String>> orders = [
@@ -157,15 +158,45 @@ const List<Map<String, String>> orders = [
 
 class _HeaderCell extends StatelessWidget {
   final String title;
-  const _HeaderCell({Key? key, required this.title}) : super(key: key);
+  final bool selectedAsc;
+  const _HeaderCell({Key? key, required this.title, this.selectedAsc = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
           title.toUpperCase(),
-          style: TextStyle(fontSize: 10),
+          style: TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w500,
+              color: (selectedAsc) ? COLOR_SUPER_DARK_BLUE : COLOR_MEDIUM_GRAY),
+        ),
+        SizedBox(
+          width: 4,
+        ),
+        Container(
+          height: 20,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                AEIcons.up,
+                size: 5,
+                color: (selectedAsc) ? COLOR_MEDIUM_GRAY : COLOR_LIGHT_GRAY,
+              ),
+              SizedBox(
+                height: 2,
+              ),
+              Icon(
+                AEIcons.down,
+                size: 5,
+                color: COLOR_LIGHT_GRAY,
+              )
+            ],
+          ),
         )
       ],
     );
@@ -241,7 +272,8 @@ class _OrderItem extends StatelessWidget {
       decoration: whiteBoxDecoration,
       child: Row(
         children: [
-          Checkbox(value: false, onChanged: (_) {}),
+          CustomCheckbox(),
+          SizedBox(width: 10,),
           Expanded(
             child: _DataCell(
               text: orderNo,
@@ -308,7 +340,22 @@ class _OrderItem extends StatelessWidget {
             flex: proportions['payment']!,
           ),
           Expanded(
-            child: Column(),
+            child: Row(children: [
+              Container(height: 4, width: 4, decoration: BoxDecoration(
+                  color: COLOR_SUPER_DARK_BLUE,
+                  borderRadius: BorderRadius.circular(4)
+              ),),
+              SizedBox(width: 4,),
+              Container(height: 4, width: 4, decoration: BoxDecoration(
+                  color: COLOR_SUPER_DARK_BLUE,
+                  borderRadius: BorderRadius.circular(4)
+              ),),
+              SizedBox(width: 4,),
+              Container(height: 4, width: 4, decoration: BoxDecoration(
+                  color: COLOR_SUPER_DARK_BLUE,
+                  borderRadius: BorderRadius.circular(4)
+              ),)
+            ],),
             flex: 1,
           )
         ],
@@ -428,7 +475,8 @@ class _DataTableHeader extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Checkbox(value: false, onChanged: (_) {}),
+          CustomCheckbox(),
+          SizedBox(width: 10,),
           Expanded(
               child: _HeaderCell(
                 title: "order no.",
@@ -437,6 +485,7 @@ class _DataTableHeader extends StatelessWidget {
           Expanded(
             child: _HeaderCell(
               title: 'created',
+              selectedAsc: true,
             ),
             flex: proportions['created']!,
           ),
@@ -519,14 +568,19 @@ class _Pagination extends StatelessWidget {
                         child: Center(
                           child: Text(
                             "Next Page",
-                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w600),
                           ),
                         ),
                       ),
                       SizedBox(
                         width: 8,
                       ),
-                      Icon(AEIcons.next_page, color: Colors.white, size: 15,)
+                      Icon(
+                        AEIcons.next_page,
+                        color: Colors.white,
+                        size: 15,
+                      )
                     ],
                   ),
                 ),
@@ -562,7 +616,11 @@ class _Pagination extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
                   child: Center(
-                    child: Icon(AEIcons.back, size: 14, color: COLOR_TURQUOISE.withOpacity(0.25),),
+                    child: Icon(
+                      AEIcons.back,
+                      size: 14,
+                      color: COLOR_TURQUOISE.withOpacity(0.25),
+                    ),
                   ),
                   height: 40,
                   width: 40,
@@ -571,7 +629,11 @@ class _Pagination extends StatelessWidget {
                 Container(
                     margin: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
                     child: Center(
-                      child: Icon(AEIcons.next, size: 14, color: COLOR_TURQUOISE,),
+                      child: Icon(
+                        AEIcons.next,
+                        size: 14,
+                        color: COLOR_TURQUOISE,
+                      ),
                     ),
                     height: 40,
                     width: 40,

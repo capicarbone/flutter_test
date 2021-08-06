@@ -2,6 +2,8 @@
 
 import 'dart:ui';
 
+const COLOR_LIGHTER_GRAY = Color.fromRGBO(240, 240, 240, 1);
+const COLOR_LIGHT_GRAY = Color.fromRGBO(214, 213, 217, 1);
 const COLOR_MEDIUM_GRAY = Color.fromRGBO(140, 138, 152, 1);
 const COLOR_SUPER_DARK_BLUE = Color.fromRGBO(44, 45, 53, 1);
 const COLOR_ORANGE = Color.fromRGBO(255, 158, 14, 1);
