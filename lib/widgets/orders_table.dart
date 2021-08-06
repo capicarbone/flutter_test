@@ -444,6 +444,24 @@ class __OrderItemState extends State<_OrderItem> {
       'Payment Method': "${widget.card_type}, ${widget.card_number}"
     };
 
+    Color orderColor;
+    switch (widget.status) {
+      case 'Preparing':
+        orderColor = AEColors.orange;
+        break;
+      case 'Sent':
+        orderColor = AEColors.blue;
+        break;
+      case 'Returned':
+        orderColor = AEColors.darkBlue;
+        break;
+      case 'Cancelled':
+        orderColor = AEColors.red;
+        break;
+      default:
+        orderColor = AEColors.turquoise;
+    }
+
     return Container(
       decoration: whiteBoxDecoration,
       padding: EdgeInsets.all(8),
@@ -462,7 +480,7 @@ class __OrderItemState extends State<_OrderItem> {
                       height: 30,
                       width: 30,
                       decoration: BoxDecoration(
-                          color: Colors.amber,
+                          color: orderColor,
                           borderRadius: BorderRadius.circular(15)),
                       margin: EdgeInsets.only(right: 8),
                       child: Icon(
