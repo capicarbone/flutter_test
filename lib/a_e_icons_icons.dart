@@ -49,4 +49,5 @@ class AEIcons {
   static const IconData up = IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData down = IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData expand_more = IconData(0xe817, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData sort = IconData(0xe818, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

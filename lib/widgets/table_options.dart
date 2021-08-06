@@ -125,7 +125,7 @@ class TableOptions extends StatelessWidget {
               Expanded(
                   child: CustomButton(
                 text: 'Sort',
-                icon: AEIcons.filter,
+                icon: AEIcons.sort,
               )),
             ],
           )
