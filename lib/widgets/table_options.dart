@@ -74,6 +74,12 @@ class TableOptions extends StatelessWidget {
                     SizedBox(
                       width: 10,
                     ),
+                    Text("Search by any order parameter",
+                      style: TextStyle(fontSize: 12, color: AEColors.mediumGray ),
+                    )
+                    // TODO Add input
+                    // Currently getting random visual issues
+                    /*
                     Flexible(
                       child: const TextField(
                         style: TextStyle(fontSize: 14),
@@ -90,6 +96,7 @@ class TableOptions extends StatelessWidget {
                             hintText: "Search by any order parameter"),
                       ),
                     ),
+                    */
                   ],
                 ),
               ),
