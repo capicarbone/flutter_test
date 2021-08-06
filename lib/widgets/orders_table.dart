@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:appevolve_test/a_e_icons_icons.dart';
 import 'package:appevolve_test/adaptive.dart';
 import 'package:appevolve_test/colors.dart';
@@ -21,7 +23,7 @@ const Map<String, int> proportions = {
 
 const List<Map<String, String?>> orders = [
   {
-    'orderNo': "#13702574",
+    'orderNo': "#13702571",
     'created_date': "04/10/2021",
     'created_time': "02:39",
     'client_name': "Matthew Collins",
@@ -37,7 +39,7 @@ const List<Map<String, String?>> orders = [
     'card_number': "**** 9171",
   },
   {
-    'orderNo': "#13702574",
+    'orderNo': "#13702572",
     'created_date': "04/10/2021",
     'created_time': "02:39",
     'client_name': "Matthew Collins",
@@ -53,7 +55,7 @@ const List<Map<String, String?>> orders = [
     'card_number': "**** 9171",
   },
   {
-    'orderNo': "#13702574",
+    'orderNo': "#13702573",
     'created_date': "04/10/2021",
     'created_time': "02:39",
     'client_name': "Matthew Collins",
@@ -85,7 +87,7 @@ const List<Map<String, String?>> orders = [
     'card_number': "**** 9171",
   },
   {
-    'orderNo': "#13702574",
+    'orderNo': "#13702575",
     'created_date': "04/10/2021",
     'created_time': "02:39",
     'client_name': "Matthew Collins",
@@ -101,7 +103,7 @@ const List<Map<String, String?>> orders = [
     'card_number': "**** 9171",
   },
   {
-    'orderNo': "#13702574",
+    'orderNo': "#13702576",
     'created_date': "04/10/2021",
     'created_time': "02:39",
     'client_name': "Matthew Collins",
@@ -117,7 +119,7 @@ const List<Map<String, String?>> orders = [
     'card_number': "**** 9171",
   },
   {
-    'orderNo': "#13702574",
+    'orderNo': "#13702577",
     'created_date': "04/10/2021",
     'created_time': "02:39",
     'client_name': "Matthew Collins",
@@ -133,7 +135,7 @@ const List<Map<String, String?>> orders = [
     'card_number': "**** 9171",
   },
   {
-    'orderNo': "#13702574",
+    'orderNo': "#13702578",
     'created_date': "04/10/2021",
     'created_time': "02:39",
     'client_name': "Matthew Collins",
@@ -149,7 +151,7 @@ const List<Map<String, String?>> orders = [
     'card_number': "**** 9171",
   },
   {
-    'orderNo': "#13702574",
+    'orderNo': "#13702579",
     'created_date': "04/10/2021",
     'created_time': "02:39",
     'client_name': "Matthew Collins",
@@ -249,7 +251,7 @@ class _DataCell extends StatelessWidget {
   }
 }
 
-class _OrderItem extends StatelessWidget {
+class _OrderItem extends StatefulWidget {
   final String orderNo;
   final String created_date;
   final String created_time;
@@ -264,6 +266,7 @@ class _OrderItem extends StatelessWidget {
   final String price;
   final String card_type;
   final String card_number;
+  final bool checked;
 
   const _OrderItem(
       {Key? key,
@@ -280,118 +283,142 @@ class _OrderItem extends StatelessWidget {
       required this.courier,
       required this.price,
       required this.card_type,
-      required this.card_number})
+      required this.card_number,
+      this.checked = false})
       : super(key: key);
 
+  @override
+  __OrderItemState createState() => __OrderItemState(checked);
+}
+
+class __OrderItemState extends State<_OrderItem> {
+
+  bool checked = false;
+
+  __OrderItemState(this.checked);
+
   Widget _buildRow(BuildContext context) {
-    return Container(
-      height: 70,
-      padding: EdgeInsets.symmetric(horizontal: 8),
-      margin: EdgeInsets.only(top: 8),
-      decoration: whiteBoxDecoration,
-      child: Row(
-        children: [
-          CustomCheckbox(),
-          SizedBox(width: 10,),
-          Expanded(
-            child: _DataCell(
-              text: orderNo,
-              highlighted: true,
-            ),
-            flex: proportions['order_no']!,
-          ),
-          Expanded(
-            child: _DataCell(
-              text: created_date,
-              subText: created_time,
-            ),
-            flex: proportions['created']!,
-          ),
-          Expanded(
-            child: _DataCell(
-              text: client_name,
-              subText: client_email,
-            ),
-            flex: proportions['client']!,
-          ),
-          Expanded(
-            child: _DataCell(
-              text: products,
-              highlightedText: moreProducts,
-            ),
-            flex: proportions['products']!,
-          ),
-          Expanded(
-            child: _DataCell(
-              text: distribution,
-            ),
-            flex: proportions['distribution']!,
-          ),
-          Expanded(
-            child: Container(
-              child: Row(
-                children: [
-                  _StatusBadge(
-                    status: status,
-                  ),
-                ],
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          checked = !checked;
+        });
+      },
+      child: Container(
+        height: 70,
+        padding: EdgeInsets.symmetric(horizontal: 8),
+        margin: EdgeInsets.only(top: 8),
+        decoration: whiteBoxDecoration.copyWith(
+          boxShadow: [
+            if (checked)
+            BoxShadow(color: COLOR_MEDIUM_GRAY.withAlpha(50),
+            blurRadius: 10)
+          ]
+        ),
+        child: Row(
+          children: [
+            CustomCheckbox(checked: checked,),
+            SizedBox(width: 10,),
+            Expanded(
+              child: _DataCell(
+                text: widget.orderNo,
+                highlighted: true,
               ),
+              flex: proportions['order_no']!,
             ),
-            flex: proportions['status']!,
-          ),
-          Expanded(
-            child: _DataCell(
-              text: tracking,
-              subText: courier,
+            Expanded(
+              child: _DataCell(
+                text: widget.created_date,
+                subText: widget.created_time,
+              ),
+              flex: proportions['created']!,
             ),
-            flex: proportions['tracking']!,
-          ),
-          Expanded(
-            child: _DataCell(
-              text: price,
+            Expanded(
+              child: _DataCell(
+                text: widget.client_name,
+                subText: widget.client_email,
+              ),
+              flex: proportions['client']!,
             ),
-            flex: proportions['price']!,
-          ),
-          Expanded(
-            child: _DataCell(
-              text: card_type,
-              subText: card_number,
+            Expanded(
+              child: _DataCell(
+                text: widget.products,
+                highlightedText: widget.moreProducts,
+              ),
+              flex: proportions['products']!,
             ),
-            flex: proportions['payment']!,
-          ),
-          Expanded(
-            child: Row(children: [
-              Container(height: 4, width: 4, decoration: BoxDecoration(
-                  color: COLOR_SUPER_DARK_BLUE,
-                  borderRadius: BorderRadius.circular(4)
-              ),),
-              SizedBox(width: 4,),
-              Container(height: 4, width: 4, decoration: BoxDecoration(
-                  color: COLOR_SUPER_DARK_BLUE,
-                  borderRadius: BorderRadius.circular(4)
-              ),),
-              SizedBox(width: 4,),
-              Container(height: 4, width: 4, decoration: BoxDecoration(
-                  color: COLOR_SUPER_DARK_BLUE,
-                  borderRadius: BorderRadius.circular(4)
-              ),)
-            ],),
-            flex: 1,
-          )
-        ],
+            Expanded(
+              child: _DataCell(
+                text: widget.distribution,
+              ),
+              flex: proportions['distribution']!,
+            ),
+            Expanded(
+              child: Container(
+                child: Row(
+                  children: [
+                    _StatusBadge(
+                      status: widget.status,
+                    ),
+                  ],
+                ),
+              ),
+              flex: proportions['status']!,
+            ),
+            Expanded(
+              child: _DataCell(
+                text: widget.tracking,
+                subText: widget.courier,
+              ),
+              flex: proportions['tracking']!,
+            ),
+            Expanded(
+              child: _DataCell(
+                text: widget.price,
+              ),
+              flex: proportions['price']!,
+            ),
+            Expanded(
+              child: _DataCell(
+                text: widget.card_type,
+                subText: widget.card_number,
+              ),
+              flex: proportions['payment']!,
+            ),
+            Expanded(
+              child: Row(children: [
+                Container(height: 4, width: 4, decoration: BoxDecoration(
+                    color: COLOR_SUPER_DARK_BLUE,
+                    borderRadius: BorderRadius.circular(4)
+                ),),
+                SizedBox(width: 4,),
+                Container(height: 4, width: 4, decoration: BoxDecoration(
+                    color: COLOR_SUPER_DARK_BLUE,
+                    borderRadius: BorderRadius.circular(4)
+                ),),
+                SizedBox(width: 4,),
+                Container(height: 4, width: 4, decoration: BoxDecoration(
+                    color: COLOR_SUPER_DARK_BLUE,
+                    borderRadius: BorderRadius.circular(4)
+                ),)
+              ],),
+              flex: 1,
+            )
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildTable(BuildContext context) {
     final Map<String, String> fields = {
-      'Client Name': client_name,
-      'Client Email': client_email,
-      'Delivery Company': courier,
-      'Tracking Code': tracking,
-      'Products': products,
-      'Price': price,
-      'Payment Method': "$card_type, $card_number"
+      'Client Name': widget.client_name,
+      'Client Email': widget.client_email,
+      'Delivery Company': widget.courier,
+      'Tracking Code': widget.tracking,
+      'Products': widget.products,
+      'Price': widget.price,
+      'Payment Method': "${widget.card_type}, ${widget.card_number}"
     };
 
     return Container(
@@ -418,7 +445,7 @@ class _OrderItem extends StatelessWidget {
                       child: Icon(AEIcons.order, color: Colors.white, size: 16,),
                     ),
                     Text(
-                      orderNo,
+                      widget.orderNo,
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
@@ -426,7 +453,7 @@ class _OrderItem extends StatelessWidget {
                     )
                   ],
                 ),
-                _StatusBadge(status: status)
+                _StatusBadge(status: widget.status)
               ],
             ),
           ),
@@ -437,10 +464,10 @@ class _OrderItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "$created_date, $created_time",
+                  "${widget.created_date}, ${widget.created_time}",
                   style: TextStyle(fontSize: 12, color: COLOR_MEDIUM_GRAY),
                 ),
-                Text(distribution,
+                Text(widget.distribution,
                     style: TextStyle(fontSize: 12, color: COLOR_MEDIUM_GRAY))
               ],
             ),
@@ -715,6 +742,7 @@ class OrdersTable extends StatelessWidget {
               price: e['price']!,
               card_type: e['card_type']!,
               card_number: e['card_number']!,
+          checked: e['orderNo']! == "#13702571",
             )),
         _Pagination()
       ],
