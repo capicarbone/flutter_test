@@ -415,6 +415,7 @@ class _OrderItem extends StatelessWidget {
                           color: Colors.amber,
                           borderRadius: BorderRadius.circular(15)),
                       margin: EdgeInsets.only(right: 8),
+                      child: Icon(AEIcons.order, color: Colors.white, size: 16,),
                     ),
                     Text(
                       orderNo,

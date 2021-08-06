@@ -17,7 +17,7 @@ class Avatar extends StatelessWidget {
         Container(
             width: isDesktop ? 42 : 24,
             height: isDesktop ? 42 : 24,
-            child: Image(image: AssetImage('avatar.png'))),
+            child: Image(image: AssetImage('images/avatar.png'))),
         Positioned(
           child: Container(
             width: isDesktop ? 12 : 7,

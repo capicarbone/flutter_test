@@ -80,7 +80,7 @@ class _AppLogo extends StatelessWidget {
             width: 160,
             height: 31,
             child: Image(
-              image: AssetImage('appevolve_logo.png'),
+              image: AssetImage('images/appevolve_logo.png'),
             )),
       ),
     );
