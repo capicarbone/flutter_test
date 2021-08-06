@@ -99,7 +99,7 @@ class TableOptions extends StatelessWidget {
                         //margin: EdgeInsets.only(left: 8),
                         width: 186,
                         child: CustomButton(
-                          text: e['title'].toString()!,
+                          text: e['title']!.toString(),
                           icon: (e['icon'] as IconData),
                           isDropdown: true,
                         )))

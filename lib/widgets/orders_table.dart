@@ -1,3 +1,4 @@
+import 'package:appevolve_test/a_e_icons_icons.dart';
 import 'package:appevolve_test/adaptive.dart';
 import 'package:appevolve_test/colors.dart';
 import 'package:appevolve_test/widgets/chip.dart';
@@ -275,12 +276,15 @@ class _OrderItem extends StatelessWidget {
             flex: proportions['distribution']!,
           ),
           Expanded(
-            child: Container(child:
-              Row(
+            child: Container(
+              child: Row(
                 children: [
-                  _StatusBadge(status: status,),
+                  _StatusBadge(
+                    status: status,
+                  ),
                 ],
-              ),),
+              ),
+            ),
             flex: proportions['status']!,
           ),
           Expanded(
@@ -502,11 +506,11 @@ class _Pagination extends StatelessWidget {
           children: [
             Text("1-20 of 294"),
             if (isDesktop)
-              OutlinedButton(
+              TextButton(
                 onPressed: () {},
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 6, horizontal: 20),
+                      const EdgeInsets.symmetric(vertical: 7, horizontal: 22),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -515,14 +519,14 @@ class _Pagination extends StatelessWidget {
                         child: Center(
                           child: Text(
                             "Next Page",
-                            style: TextStyle(fontSize: 14),
+                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
                           ),
                         ),
                       ),
                       SizedBox(
                         width: 8,
                       ),
-                      Icon(Icons.arrow_forward)
+                      Icon(AEIcons.next_page, color: Colors.white, size: 15,)
                     ],
                   ),
                 ),
@@ -558,7 +562,7 @@ class _Pagination extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
                   child: Center(
-                    child: Icon(Icons.arrow_left),
+                    child: Icon(AEIcons.back, size: 14, color: COLOR_TURQUOISE.withOpacity(0.25),),
                   ),
                   height: 40,
                   width: 40,
@@ -567,7 +571,7 @@ class _Pagination extends StatelessWidget {
                 Container(
                     margin: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
                     child: Center(
-                      child: Icon(Icons.arrow_right),
+                      child: Icon(AEIcons.next, size: 14, color: COLOR_TURQUOISE,),
                     ),
                     height: 40,
                     width: 40,
