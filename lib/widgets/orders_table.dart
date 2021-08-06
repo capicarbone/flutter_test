@@ -184,7 +184,8 @@ class _HeaderCell extends StatelessWidget {
           style: TextStyle(
               fontSize: 10,
               fontWeight: FontWeight.w500,
-              color: (selectedAsc) ? AEColors.superDarkBlue : AEColors.mediumGray),
+              color:
+                  (selectedAsc) ? AEColors.superDarkBlue : AEColors.mediumGray),
         ),
         SizedBox(
           width: 4,
@@ -222,7 +223,11 @@ class _DataCell extends StatelessWidget {
   final bool highlighted;
 
   const _DataCell(
-      {Key? key, required this.text, this.subText, this.highlightedText, this.highlighted = false})
+      {Key? key,
+      required this.text,
+      this.subText,
+      this.highlightedText,
+      this.highlighted = false})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -231,21 +236,23 @@ class _DataCell extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         RichText(
-          text: TextSpan(
-            style: GoogleFonts.manrope(fontSize: 12),
-        children: [
-          TextSpan(text: text, style: TextStyle(
-              fontWeight: (highlighted) ? FontWeight.w600 : FontWeight.normal)),
-          if (highlightedText != null)
-          TextSpan(text: highlightedText, style: TextStyle(color: Theme.of(context).accentColor, fontWeight: FontWeight.w600))
-        ]
-    )
-          ,
+          text: TextSpan(style: GoogleFonts.manrope(fontSize: 12), children: [
+            TextSpan(
+                text: text,
+                style: TextStyle(
+                    fontWeight:
+                        (highlighted) ? FontWeight.w600 : FontWeight.normal)),
+            if (highlightedText != null)
+              TextSpan(
+                  text: highlightedText,
+                  style: TextStyle(
+                      color: Theme.of(context).accentColor,
+                      fontWeight: FontWeight.w600))
+          ]),
         ),
         if (subText != null)
           Text(subText!,
-              style: TextStyle(
-                  fontSize: 12, color: AEColors.mediumGray ))
+              style: TextStyle(fontSize: 12, color: AEColors.mediumGray))
       ],
     );
   }
@@ -276,7 +283,7 @@ class _OrderItem extends StatefulWidget {
       required this.client_name,
       required this.client_email,
       required this.products,
-        required this.moreProducts,
+      required this.moreProducts,
       required this.distribution,
       required this.status,
       required this.tracking,
@@ -292,7 +299,6 @@ class _OrderItem extends StatefulWidget {
 }
 
 class __OrderItemState extends State<_OrderItem> {
-
   bool checked = false;
 
   __OrderItemState(this.checked);
@@ -308,17 +314,18 @@ class __OrderItemState extends State<_OrderItem> {
         height: 70,
         padding: EdgeInsets.symmetric(horizontal: 8),
         margin: EdgeInsets.only(top: 8),
-        decoration: whiteBoxDecoration.copyWith(
-          boxShadow: [
-            if (checked)
-            BoxShadow(color: AEColors.mediumGray.withAlpha(50),
-            blurRadius: 10)
-          ]
-        ),
+        decoration: whiteBoxDecoration.copyWith(boxShadow: [
+          if (checked)
+            BoxShadow(color: AEColors.mediumGray.withAlpha(50), blurRadius: 10)
+        ]),
         child: Row(
           children: [
-            CustomCheckbox(checked: checked,),
-            SizedBox(width: 10,),
+            CustomCheckbox(
+              checked: checked,
+            ),
+            SizedBox(
+              width: 10,
+            ),
             Expanded(
               child: _DataCell(
                 text: widget.orderNo,
@@ -386,22 +393,37 @@ class __OrderItemState extends State<_OrderItem> {
               flex: proportions['payment']!,
             ),
             Expanded(
-              child: Row(children: [
-                Container(height: 4, width: 4, decoration: BoxDecoration(
-                    color: AEColors.superDarkBlue,
-                    borderRadius: BorderRadius.circular(4)
-                ),),
-                SizedBox(width: 4,),
-                Container(height: 4, width: 4, decoration: BoxDecoration(
-                    color: AEColors.superDarkBlue,
-                    borderRadius: BorderRadius.circular(4)
-                ),),
-                SizedBox(width: 4,),
-                Container(height: 4, width: 4, decoration: BoxDecoration(
-                    color: AEColors.superDarkBlue,
-                    borderRadius: BorderRadius.circular(4)
-                ),)
-              ],),
+              child: Row(
+                children: [
+                  Container(
+                    height: 4,
+                    width: 4,
+                    decoration: BoxDecoration(
+                        color: AEColors.superDarkBlue,
+                        borderRadius: BorderRadius.circular(4)),
+                  ),
+                  SizedBox(
+                    width: 4,
+                  ),
+                  Container(
+                    height: 4,
+                    width: 4,
+                    decoration: BoxDecoration(
+                        color: AEColors.superDarkBlue,
+                        borderRadius: BorderRadius.circular(4)),
+                  ),
+                  SizedBox(
+                    width: 4,
+                  ),
+                  Container(
+                    height: 4,
+                    width: 4,
+                    decoration: BoxDecoration(
+                        color: AEColors.superDarkBlue,
+                        borderRadius: BorderRadius.circular(4)),
+                  )
+                ],
+              ),
               flex: 1,
             )
           ],
@@ -442,7 +464,11 @@ class __OrderItemState extends State<_OrderItem> {
                           color: Colors.amber,
                           borderRadius: BorderRadius.circular(15)),
                       margin: EdgeInsets.only(right: 8),
-                      child: Icon(AEIcons.order, color: Colors.white, size: 16,),
+                      child: Icon(
+                        AEIcons.order,
+                        color: Colors.white,
+                        size: 16,
+                      ),
                     ),
                     Text(
                       widget.orderNo,
@@ -482,7 +508,8 @@ class __OrderItemState extends State<_OrderItem> {
                   children: [
                     Text(
                       e.value.key,
-                      style: TextStyle(fontSize: 12, color: AEColors.mediumGray),
+                      style:
+                          TextStyle(fontSize: 12, color: AEColors.mediumGray),
                     ),
                     Expanded(
                       child: Text(
@@ -524,7 +551,9 @@ class _DataTableHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           CustomCheckbox(),
-          SizedBox(width: 10,),
+          SizedBox(
+            width: 10,
+          ),
           Expanded(
               child: _HeaderCell(
                 title: "order no.",
@@ -699,22 +728,28 @@ class _StatusBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     Color color;
-    switch (status){
+    switch (status) {
       case 'Preparing':
-        color = AEColors.orange; break;
+        color = AEColors.orange;
+        break;
       case 'Sent':
-        color = AEColors.blue; break;
+        color = AEColors.blue;
+        break;
       case 'Returned':
-        color = AEColors.darkBlue; break;
+        color = AEColors.darkBlue;
+        break;
       case 'Cancelled':
-        color = AEColors.red; break;
+        color = AEColors.red;
+        break;
       default:
         color = AEColors.turquoise;
     }
 
-    return CustomChip(text: status, color: color,);
+    return CustomChip(
+      text: status,
+      color: color,
+    );
   }
 }
 
@@ -742,7 +777,7 @@ class OrdersTable extends StatelessWidget {
               price: e['price']!,
               card_type: e['card_type']!,
               card_number: e['card_number']!,
-          checked: e['orderNo']! == "#13702571",
+              checked: e['orderNo']! == "#13702571",
             )),
         _Pagination()
       ],

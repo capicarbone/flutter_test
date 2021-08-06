@@ -9,9 +9,8 @@ class _FilterBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textColor = filter.selected
-        ? Theme.of(context).accentColor
-        : AEColors.mediumGray ;
+    final textColor =
+        filter.selected ? Theme.of(context).accentColor : AEColors.mediumGray;
     return Container(
       margin: EdgeInsets.only(right: 22),
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),

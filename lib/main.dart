@@ -22,7 +22,8 @@ class AppScaffold extends StatelessWidget {
           width: 200,
           child: NavigationBar(),
         ),
-        Expanded(child: SingleChildScrollView(
+        Expanded(
+            child: SingleChildScrollView(
           child: OrdersScreen(),
         ))
       ],
@@ -36,19 +37,20 @@ class AppScaffold extends StatelessWidget {
               title: Text(
                 "Orders",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20) ,
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
               ),
               centerTitle: true,
               actions: [
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
-                  child: Center(
-                      child: Avatar()),
+                  child: Center(child: Avatar()),
                 )
               ],
             )
           : null,
-      body: (isDesktop) ? desktopBody : SingleChildScrollView(child: OrdersScreen()),
+      body: (isDesktop)
+          ? desktopBody
+          : SingleChildScrollView(child: OrdersScreen()),
       drawer: (!isDesktop)
           ? Drawer(
               child: NavigationBar(),

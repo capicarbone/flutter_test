@@ -44,7 +44,9 @@ class OrdersScreen extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              SizedBox(width: isDesktop ? 30 : 16,),
+              SizedBox(
+                width: isDesktop ? 30 : 16,
+              ),
               TableQuickFilters(
                 filters: [
                   Filter(name: "All Orders", qty: 294, selected: true),
@@ -62,7 +64,6 @@ class OrdersScreen extends StatelessWidget {
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             SizedBox(
               height: 1,
             ),
