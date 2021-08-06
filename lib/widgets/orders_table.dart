@@ -5,6 +5,7 @@ import 'package:appevolve_test/widgets/chip.dart';
 import 'package:appevolve_test/widgets/custom_checkbox.dart';
 import 'package:appevolve_test/widgets/helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 const Map<String, int> proportions = {
   'order_no': 4,
@@ -18,14 +19,15 @@ const Map<String, int> proportions = {
   'payment': 3
 };
 
-const List<Map<String, String>> orders = [
+const List<Map<String, String?>> orders = [
   {
     'orderNo': "#13702574",
     'created_date': "04/10/2021",
     'created_time': "02:39",
     'client_name': "Matthew Collins",
     'client_email': "c.matthews@outlook.com",
-    'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
+    'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses,",
+    'more_products': ' +5 more',
     'distribution': "Colorado Springs",
     'status': "Preparing",
     'tracking': "705-610844",
@@ -41,6 +43,7 @@ const List<Map<String, String>> orders = [
     'client_name': "Matthew Collins",
     'client_email': "c.matthews@outlook.com",
     'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
+    'more_products': null,
     'distribution': "Colorado Springs",
     'status': "Sent",
     'tracking': "705-610844",
@@ -55,7 +58,8 @@ const List<Map<String, String>> orders = [
     'created_time': "02:39",
     'client_name': "Matthew Collins",
     'client_email': "c.matthews@outlook.com",
-    'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
+    'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses,",
+    'more_products': ' +10 more',
     'distribution': "Colorado Springs",
     'status': "Returned",
     'tracking': "705-610844",
@@ -71,6 +75,7 @@ const List<Map<String, String>> orders = [
     'client_name': "Matthew Collins",
     'client_email': "c.matthews@outlook.com",
     'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
+    'more_products': null,
     'distribution': "Colorado Springs",
     'status': "Cancelled",
     'tracking': "705-610844",
@@ -85,7 +90,8 @@ const List<Map<String, String>> orders = [
     'created_time': "02:39",
     'client_name': "Matthew Collins",
     'client_email': "c.matthews@outlook.com",
-    'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
+    'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses,",
+    'more_products': ' +1 more',
     'distribution': "Colorado Springs",
     'status': "Delivered",
     'tracking': "705-610844",
@@ -101,6 +107,7 @@ const List<Map<String, String>> orders = [
     'client_name': "Matthew Collins",
     'client_email': "c.matthews@outlook.com",
     'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
+    'more_products': null,
     'distribution': "Colorado Springs",
     'status': "Sent",
     'tracking': "705-610844",
@@ -115,7 +122,8 @@ const List<Map<String, String>> orders = [
     'created_time': "02:39",
     'client_name': "Matthew Collins",
     'client_email': "c.matthews@outlook.com",
-    'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
+    'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses,",
+    'more_products': ' +3 more',
     'distribution': "Colorado Springs",
     'status': "Cancelled",
     'tracking': "705-610844",
@@ -131,6 +139,7 @@ const List<Map<String, String>> orders = [
     'client_name': "Matthew Collins",
     'client_email': "c.matthews@outlook.com",
     'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
+    'more_products': null,
     'distribution': "Colorado Springs",
     'status': "Delivered",
     'tracking': "705-610844",
@@ -145,7 +154,8 @@ const List<Map<String, String>> orders = [
     'created_time': "02:39",
     'client_name': "Matthew Collins",
     'client_email': "c.matthews@outlook.com",
-    'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
+    'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses,",
+    'more_products': ' +2 more',
     'distribution': "Colorado Springs",
     'status': "Preparing",
     'tracking': "705-610844",
@@ -206,10 +216,11 @@ class _HeaderCell extends StatelessWidget {
 class _DataCell extends StatelessWidget {
   final String text;
   final String? subText;
+  final String? highlightedText;
   final bool highlighted;
 
   const _DataCell(
-      {Key? key, required this.text, this.subText, this.highlighted = false})
+      {Key? key, required this.text, this.subText, this.highlightedText, this.highlighted = false})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -217,11 +228,17 @@ class _DataCell extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          text,
-          style: TextStyle(
-              fontSize: 12,
-              fontWeight: (highlighted) ? FontWeight.w600 : FontWeight.normal),
+        RichText(
+          text: TextSpan(
+            style: GoogleFonts.manrope(fontSize: 12),
+        children: [
+          TextSpan(text: text, style: TextStyle(
+              fontWeight: (highlighted) ? FontWeight.w600 : FontWeight.normal)),
+          if (highlightedText != null)
+          TextSpan(text: highlightedText, style: TextStyle(color: Theme.of(context).accentColor, fontWeight: FontWeight.w600))
+        ]
+    )
+          ,
         ),
         if (subText != null)
           Text(subText!,
@@ -239,6 +256,7 @@ class _OrderItem extends StatelessWidget {
   final String client_name;
   final String client_email;
   final String products;
+  final String? moreProducts;
   final String distribution;
   final String status;
   final String tracking;
@@ -255,6 +273,7 @@ class _OrderItem extends StatelessWidget {
       required this.client_name,
       required this.client_email,
       required this.products,
+        required this.moreProducts,
       required this.distribution,
       required this.status,
       required this.tracking,
@@ -298,6 +317,7 @@ class _OrderItem extends StatelessWidget {
           Expanded(
             child: _DataCell(
               text: products,
+              highlightedText: moreProducts,
             ),
             flex: proportions['products']!,
           ),
@@ -686,6 +706,7 @@ class OrdersTable extends StatelessWidget {
               client_name: e['client_name']!,
               client_email: e['client_email']!,
               products: e['products']!,
+              moreProducts: e['more_products'],
               distribution: e['distribution']!,
               status: e['status']!,
               tracking: e['tracking']!,
