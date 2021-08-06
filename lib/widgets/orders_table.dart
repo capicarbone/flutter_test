@@ -42,7 +42,7 @@ const List<Map<String, String>> orders = [
     'client_email': "c.matthews@outlook.com",
     'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
     'distribution': "Colorado Springs",
-    'status': "Preparing",
+    'status': "Sent",
     'tracking': "705-610844",
     'courier': "DHL",
     'price': "\$2,198.03",
@@ -57,7 +57,7 @@ const List<Map<String, String>> orders = [
     'client_email': "c.matthews@outlook.com",
     'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
     'distribution': "Colorado Springs",
-    'status': "Preparing",
+    'status': "Returned",
     'tracking': "705-610844",
     'courier': "DHL",
     'price': "\$2,198.03",
@@ -72,7 +72,7 @@ const List<Map<String, String>> orders = [
     'client_email': "c.matthews@outlook.com",
     'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
     'distribution': "Colorado Springs",
-    'status': "Preparing",
+    'status': "Cancelled",
     'tracking': "705-610844",
     'courier': "DHL",
     'price': "\$2,198.03",
@@ -87,7 +87,7 @@ const List<Map<String, String>> orders = [
     'client_email': "c.matthews@outlook.com",
     'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
     'distribution': "Colorado Springs",
-    'status': "Preparing",
+    'status': "Delivered",
     'tracking': "705-610844",
     'courier': "DHL",
     'price': "\$2,198.03",
@@ -102,7 +102,7 @@ const List<Map<String, String>> orders = [
     'client_email': "c.matthews@outlook.com",
     'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
     'distribution': "Colorado Springs",
-    'status': "Preparing",
+    'status': "Sent",
     'tracking': "705-610844",
     'courier': "DHL",
     'price': "\$2,198.03",
@@ -117,7 +117,7 @@ const List<Map<String, String>> orders = [
     'client_email': "c.matthews@outlook.com",
     'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
     'distribution': "Colorado Springs",
-    'status': "Preparing",
+    'status': "Cancelled",
     'tracking': "705-610844",
     'courier': "DHL",
     'price': "\$2,198.03",
@@ -132,7 +132,7 @@ const List<Map<String, String>> orders = [
     'client_email': "c.matthews@outlook.com",
     'products': "Hourglass Wallet on Chain, Void Butterfly Sunglasses",
     'distribution': "Colorado Springs",
-    'status': "Preparing",
+    'status': "Delivered",
     'tracking': "705-610844",
     'courier': "DHL",
     'price': "\$2,198.03",
@@ -651,7 +651,22 @@ class _StatusBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomChip(text: status);
+
+    Color color;
+    switch (status){
+      case 'Preparing':
+        color = COLOR_ORANGE; break;
+      case 'Sent':
+        color = COLOR_BLUE; break;
+      case 'Returned':
+        color = COLOR_DARK_BLUE; break;
+      case 'Cancelled':
+        color = COLOR_RED; break;
+      default:
+        color = COLOR_TURQUOISE;
+    }
+
+    return CustomChip(text: status, color: color,);
   }
 }
 
