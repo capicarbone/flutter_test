@@ -1,4 +1,5 @@
 import 'package:appevolve_test/adaptive.dart';
+import 'package:appevolve_test/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -33,7 +34,7 @@ class SectionDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 1,
-      color: Color.fromRGBO(140, 138, 152, 0.25),
+      color: COLOR_MEDIUM_GRAY.withOpacity(0.25),
     );
   }
 }

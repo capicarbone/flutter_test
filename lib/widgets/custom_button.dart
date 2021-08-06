@@ -47,7 +47,7 @@ class CustomButton extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                     color: highlighted
                         ? Theme.of(context).accentColor
-                        : Color.fromRGBO(140, 138, 152, 1)),
+                        : COLOR_MEDIUM_GRAY),
               ),
             ],
           ),

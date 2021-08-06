@@ -1,3 +1,4 @@
+import 'package:appevolve_test/colors.dart';
 import 'package:appevolve_test/screens/orders_screen.dart';
 import 'package:appevolve_test/widgets/avatar.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class AppScaffold extends StatelessWidget {
 
     final isDesktop = isDesktopDisplay(context);
     return Scaffold(
-      backgroundColor: Color.fromRGBO(240, 240, 240, 1),
+      backgroundColor: COLOR_LIGHTER_GRAY,
       appBar: (!isDesktop)
           ? AppBar(
               title: Text(
@@ -65,8 +66,8 @@ class AppEvolveTest extends StatelessWidget {
       title: 'AppEvolve',
       theme: ThemeData(
           fontFamily: GoogleFonts.manrope().fontFamily,
-          primaryColor: Color.fromRGBO(44, 45, 53, 1),
-          accentColor: Color.fromRGBO(85, 163, 174, 1)),
+          primaryColor: COLOR_SUPER_DARK_BLUE,
+          accentColor: COLOR_TURQUOISE),
       home: AppScaffold(),
     );
   }

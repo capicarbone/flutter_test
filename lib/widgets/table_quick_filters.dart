@@ -1,6 +1,8 @@
 import 'package:appevolve_test/models/filter.dart';
 import 'package:flutter/material.dart';
 
+import '../colors.dart';
+
 class _FilterBadge extends StatelessWidget {
   final Filter filter;
   const _FilterBadge({Key? key, required this.filter}) : super(key: key);
@@ -9,14 +11,14 @@ class _FilterBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final textColor = filter.selected
         ? Theme.of(context).accentColor
-        : Color.fromRGBO(140, 138, 152, 1);
+        : COLOR_MEDIUM_GRAY ;
     return Container(
       margin: EdgeInsets.only(right: 22),
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(4)),
           color: filter.selected
-              ? Color.fromRGBO(86, 163, 174, 0.25)
+              ? COLOR_TURQUOISE.withOpacity(0.25)
               : Colors.transparent),
       child: Row(
         children: [

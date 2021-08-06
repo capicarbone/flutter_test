@@ -245,7 +245,7 @@ class _DataCell extends StatelessWidget {
         if (subText != null)
           Text(subText!,
               style: TextStyle(
-                  fontSize: 12, color: Color.fromRGBO(140, 138, 152, 1)))
+                  fontSize: 12, color: COLOR_MEDIUM_GRAY ))
       ],
     );
   }

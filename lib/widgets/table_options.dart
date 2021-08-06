@@ -31,7 +31,7 @@ class _TableSelect extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                    fontSize: 12, color: Color.fromRGBO(140, 138, 152, 1)),
+                    fontSize: 12, color: COLOR_MEDIUM_GRAY ),
               )
             ],
           ),
@@ -81,7 +81,7 @@ class TableOptions extends StatelessWidget {
                             contentPadding: EdgeInsets.symmetric(vertical: 18),
                             hintStyle: TextStyle(
                                 fontSize: 12,
-                                color: Color.fromRGBO(140, 138, 152, 1)),
+                                color: COLOR_MEDIUM_GRAY ),
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
