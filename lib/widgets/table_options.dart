@@ -76,9 +76,9 @@ class TableOptions extends StatelessWidget {
                     ),
                     Flexible(
                       child: const TextField(
-                        style: TextStyle(fontSize: 12),
+                        style: TextStyle(fontSize: 14),
                         decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(vertical: 18),
+                            contentPadding: EdgeInsets.symmetric(vertical: 14),
                             hintStyle: TextStyle(
                                 fontSize: 12,
                                 color: AEColors.mediumGray ),
